@@ -1,0 +1,21 @@
+{% extends 'WebSite/base.html' %}
+
+{% block content %}
+    {% for i in items %}
+    <div class="container">
+        <div class="row grey-text">
+            <div class="col-6 name-pos">
+                <h3> <b>{{ i.name }} {{i.surname}} </b> </h3>
+                <p>
+                    <img src="{{ i.image.url }}" style="border-radius:12px" alt="Фото" width="400px" height="350px">
+                </p>
+            </div>
+            <div class="col-6 biog-pos">
+                <h3>  <b>Немного о биографии</b> </h3>
+                <p> {{ i.description|linebreaks|truncatewords:140 }} </p>
+            </div>
+            {% if not forloop.last %}
+            <hr class="grey-line">
+            {% endif %}
+    {% endfor %}
+{% endblock %}

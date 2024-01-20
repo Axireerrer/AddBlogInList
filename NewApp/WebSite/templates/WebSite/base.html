@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'WebSite/css_bootstrap/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'WebSite/css/base.css' %}" rel="stylesheet" type="text/css">
+    <title> {{ title }} </title>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <div class="image-log">
+                <img src="{% static 'WebSite/images/logo.jpg' %}" alt="Логотип">
+                <h2> <b> {{ header }}</b> </h2>
+            </div>
+            <div class="panel">
+                <h2>
+                    {% if user.is_authenticated %}
+                        <a href="#"> {{ user.first_name }} </a> |
+                        <a href="{% url 'index' %}"> На главную </a> |
+                        <a href="{% url 'logout' %}"> Выйти </a>
+                    {% else %}
+                    <a href="{% url 'login' %}"> Войти </a> |
+                    <a href="{% url 'register' %}"> Регистрация </a>
+                    {% endif %}
+                </h2>
+            </div>
+        </div>
+    </header>
+
+    {% block content %}
+
+    {% endblock %}
+    <script src="{% static 'WebSite/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

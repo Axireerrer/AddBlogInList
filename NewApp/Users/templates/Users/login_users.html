@@ -1,0 +1,15 @@
+{% extends 'WebSite/base.html' %}
+
+{% block content %}
+    <div class="form-pos">
+        <h3> <b> Авторизация <b> <hr> </h3>
+        <form action="" method="post">
+            {% csrf_token %}
+            {% for f in form %}
+            <label> <b> {{ f.label_tag}} </b></label>
+            <p> {{ f }} </p>
+            {% endfor %}
+            <button class="btn btn-success but-form" type="submit"> Отправить </button>
+        </form>
+    </div>
+{% endblock %}

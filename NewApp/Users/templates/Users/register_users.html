@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'WebSite/css_bootstrap/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'Users/users.css' %}" rel="stylesheet" type="text/css">
+    <title> {{ title }} </title>
+</head>
+<body>
+<header>
+    <div class="header">
+        <div class="image-log">
+            <img src="{% static 'WebSite/images/icon-logo.png' %}" alt="Логотип">
+            <h2> <b> {{ header }}</b> </h2>
+        </div>
+        <div class="panel">
+            <h2>
+                <a href="{% url 'login' %}"> Войти </a>
+            </h2>
+        </div>
+    </div>
+</header>
+<div class="form">
+    <h2> Форма Регистрации </h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        {% for f in form %}
+        <label> <b>{{ f.label_tag }} </b> </label>
+        <p> {{ f }} </p>
+        <p> {{ f.errors }} </p>
+        {% endfor %}
+        <button type="submit" class="btn btn-success but-form">Отправить</button>
+    </form>
+</div>
+
+
+
+
+<script src="{% static 'WebSite/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
