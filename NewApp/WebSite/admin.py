@@ -12,8 +12,3 @@ class AdminForm(admin.ModelAdmin):
     list_per_page = 2
     search_fields = ['name']
 
-    @admin.display(description="Фото")
-    def brief_info(self, famousperson: FamousPerson):
-        if famousperson.image:
-            return mark_safe(f"img src='{famousperson.image.url}'")
-        return 'Нет фото'

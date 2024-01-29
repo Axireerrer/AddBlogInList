@@ -21,6 +21,7 @@ from django.urls import path, include
 from NewApp import settings
 
 urlpatterns = [
+    path('__debug__/', include('debug_toolbar.urls')),
     path('admin/', admin.site.urls),
     path('', include('WebSite.urls')),
     path('users/', include('Users.urls'))
